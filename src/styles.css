@@ -12,8 +12,8 @@
   --ink-red-soft: rgba(200, 65, 43, 0.12);
   --indigo: #1B2A6B;
   --indigo-soft: rgba(27, 42, 107, 0.12);
-  --paper: #FBF6E9;
-  --paper-warm: #F4ECD7;
+  --paper: #F7F2E6;        /* between white and beige */
+  --paper-warm: #EFE8D6;
   --trunk: #3a2418;
   --ink: #1a1410;
 }
@@ -32,8 +32,8 @@ body,
 body {
   font-family: 'Inter', 'Noto Serif SC', system-ui, sans-serif;
   background:
-    radial-gradient(ellipse at 30% 0%, rgba(200, 65, 43, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 100%, rgba(27, 42, 107, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 0%, rgba(110, 154, 82, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(27, 42, 107, 0.05) 0%, transparent 60%),
     var(--paper);
   color: var(--ink);
   overflow-x: hidden;
@@ -171,9 +171,12 @@ body {
 }
 
 /* ---------- Leaves ----------
-   Position lives on the parent <g> (via SVG transform attribute).
-   This .leaf class only animates rotation — it must NEVER set translate,
-   otherwise it would overwrite each leaf's positioning and clump them.   */
+   Each leaf is a nested <svg x=... y=...>. CSS animations on descendants
+   cannot move the leaf because x/y are layout attributes, not transforms. */
+.leaf-host {
+  /* nothing — positioning is done via SVG x/y attributes */
+}
+
 .leaf {
   cursor: pointer;
   animation-name: sway;
@@ -202,9 +205,50 @@ body {
 }
 
 @keyframes sway {
-  0%   { transform: rotate(-1.5deg); }
-  50%  { transform: rotate( 0.5deg); }
+  0%   { transform: rotate(-1.6deg); }
+  50%  { transform: rotate( 0.4deg); }
   100% { transform: rotate( 1.8deg); }
+}
+
+/* ---------- Birds ---------- */
+.bird {
+  pointer-events: none;
+}
+
+.bird-perched {
+  animation: bird-bob ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.bird-flying {
+  animation: bird-drift ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.bird-wing {
+  animation: bird-flap 0.45s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+@keyframes bird-bob {
+  0%   { transform: translateY(0)    rotate(-1deg); }
+  100% { transform: translateY(-2px) rotate( 1deg); }
+}
+
+@keyframes bird-drift {
+  0%   { transform: translate(  0px, 0px) rotate(-2deg); }
+  25%  { transform: translate( 60px, -8px) rotate( 1deg); }
+  50%  { transform: translate(120px, 6px) rotate( 3deg); }
+  75%  { transform: translate( 60px, -4px) rotate( 0deg); }
+  100% { transform: translate(  0px, 0px) rotate(-2deg); }
+}
+
+@keyframes bird-flap {
+  0%   { transform: rotate(-12deg) scaleY(1); }
+  100% { transform: rotate( 12deg) scaleY(0.7); }
 }
 
 /* On really small screens, calm the wind a bit so it doesn't jitter */
