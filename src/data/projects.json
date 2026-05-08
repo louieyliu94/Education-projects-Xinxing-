@@ -1,0 +1,231 @@
+[
+  {
+    "id": "p01",
+    "studentNameZh": "李小雨",
+    "studentNameEn": "Li Xiaoyu",
+    "grade": "Grade 1 · 一年级",
+    "year": "2024–2025",
+    "projectTitleZh": "我家的窗外",
+    "projectTitleEn": "Outside My Window",
+    "color": "blue",
+    "blocks": [
+      { "type": "text", "content": "A year-long observation diary of the same window, painted across four seasons." },
+      { "type": "text", "content": "我画了一年中同一扇窗外的样子。春天有花，夏天有蝉，秋天有黄叶，冬天有薄雪。" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-window-spring/900/600", "caption": "Spring · 春" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-window-summer/900/600", "caption": "Summer · 夏" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-window-autumn/900/600", "caption": "Autumn · 秋" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-window-winter/900/600", "caption": "Winter · 冬" }
+    ]
+  },
+  {
+    "id": "p02",
+    "studentNameZh": "陈思远",
+    "studentNameEn": "Chen Siyuan",
+    "grade": "Grade 3 · 三年级",
+    "year": "2024–2025",
+    "projectTitleZh": "广州的木棉",
+    "projectTitleEn": "The Kapok Trees of Guangzhou",
+    "color": "red",
+    "blocks": [
+      { "type": "text", "content": "A field study of Bombax ceiba, the city flower of Guangzhou — its blossoms, bark, and the birds it feeds." },
+      { "type": "text", "content": "木棉花是广州的市花。我每周记录一次校园门口那棵大树的变化。" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-kapok-1/900/600", "caption": "March · 三月：first blossoms" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-kapok-2/900/600", "caption": "Bark rubbing · 树皮拓印" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-kapok-3/900/600", "caption": "Bird sketches · 小鸟速写" }
+    ]
+  },
+  {
+    "id": "p03",
+    "studentNameZh": "王安然",
+    "studentNameEn": "Wang Anran",
+    "grade": "Grade 5 · 五年级",
+    "year": "2024–2025",
+    "projectTitleZh": "外婆的菜谱",
+    "projectTitleEn": "Grandmother's Recipes",
+    "color": "yellow",
+    "blocks": [
+      { "type": "text", "content": "I interviewed my grandmother and recorded twelve family recipes — one for each month — illustrated in watercolor." },
+      { "type": "text", "content": "我采访了外婆，记录了十二道家里的菜，每个月一道。" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-recipe-1/900/600", "caption": "January · 腊味煲仔饭" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-recipe-2/900/600", "caption": "May · 艾草青团" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-recipe-3/900/600", "caption": "August · 龙眼莲子糖水" }
+    ]
+  },
+  {
+    "id": "p04",
+    "studentNameZh": "张牧之",
+    "studentNameEn": "Zhang Muzhi",
+    "grade": "Grade 7 · 七年级",
+    "year": "2024–2025",
+    "projectTitleZh": "城市里的鸟",
+    "projectTitleEn": "Birds of the City",
+    "color": "green",
+    "blocks": [
+      { "type": "text", "content": "Twelve months of bird watching on the way to school. Counts, sketches, and one short essay per species." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-birds-1/900/600", "caption": "白头鹎 · Light-vented bulbul" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-birds-2/900/600", "caption": "暗绿绣眼 · Japanese white-eye" },
+      { "type": "text", "content": "“The bulbul is loud at six in the morning. It does not care that I am tired.” — field journal, March 14" }
+    ]
+  },
+  {
+    "id": "p05",
+    "studentNameZh": "黄予乐",
+    "studentNameEn": "Huang Yule",
+    "grade": "Grade 2 · 二年级",
+    "year": "2024–2025",
+    "projectTitleZh": "我的小怪兽",
+    "projectTitleEn": "My Little Monsters",
+    "color": "blue",
+    "blocks": [
+      { "type": "text", "content": "A character bible for thirty-two original monsters, each with a name, a fear, and a favorite snack." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-monsters-1/900/600", "caption": "毛绒绒 · Furball, afraid of vacuum cleaners" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-monsters-2/900/600", "caption": "电灯泡 · Lightbulb, eats only moonlight" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-monsters-3/900/600", "caption": "圆滚滚 · Roly-Poly, can't reach the doorbell" }
+    ]
+  },
+  {
+    "id": "p06",
+    "studentNameZh": "苏明霞",
+    "studentNameEn": "Su Mingxia",
+    "grade": "Grade 9 · 九年级",
+    "year": "2024–2025",
+    "projectTitleZh": "诗与街道",
+    "projectTitleEn": "Poems and Streets",
+    "color": "red",
+    "blocks": [
+      { "type": "text", "content": "A bilingual poetry chapbook responding to the streets of my neighborhood." },
+      { "type": "text", "content": "《骑楼下》\n雨从屋檐滑下来，\n像一句还没说完的话。\nUnder the arcade —\nthe rain slides down the eaves\nlike a sentence not yet finished." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-poems-1/900/600", "caption": "Arcade study · 骑楼" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-poems-2/900/600", "caption": "Old letterbox · 老信箱" }
+    ]
+  },
+  {
+    "id": "p07",
+    "studentNameZh": "林子柒",
+    "studentNameEn": "Lin Ziqi",
+    "grade": "Grade 4 · 四年级",
+    "year": "2024–2025",
+    "projectTitleZh": "纸船航海日记",
+    "projectTitleEn": "A Paper Boat's Logbook",
+    "color": "yellow",
+    "blocks": [
+      { "type": "text", "content": "I folded a paper boat and imagined it sailed for one year. Each page is a port, a storm, or a friend it met." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-boat-1/900/600", "caption": "Day 14 · met a sea turtle" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-boat-2/900/600", "caption": "Day 88 · the kettle storm" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-boat-3/900/600", "caption": "Day 365 · home harbor" }
+    ]
+  },
+  {
+    "id": "p08",
+    "studentNameZh": "周小满",
+    "studentNameEn": "Zhou Xiaoman",
+    "grade": "Grade 6 · 六年级",
+    "year": "2024–2025",
+    "projectTitleZh": "学校的声音地图",
+    "projectTitleEn": "A Sound Map of the School",
+    "color": "green",
+    "blocks": [
+      { "type": "text", "content": "I recorded sounds in twenty corners of the school and drew a map where you can 'hear' each place." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-sound-1/900/600", "caption": "Cafeteria at 11:55 — a thousand spoons" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-sound-2/900/600", "caption": "Library at 14:30 — paper and breath" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-sound-3/900/600", "caption": "Stairwell at 7:50 — laughter going up" }
+    ]
+  },
+  {
+    "id": "p09",
+    "studentNameZh": "赵雨桐",
+    "studentNameEn": "Zhao Yutong",
+    "grade": "Grade 8 · 八年级",
+    "year": "2024–2025",
+    "projectTitleZh": "我家的迁徙",
+    "projectTitleEn": "My Family's Migrations",
+    "color": "blue",
+    "blocks": [
+      { "type": "text", "content": "Four generations, eight cities. I mapped where my family has lived and asked each elder for one object that traveled with them." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-migration-1/900/600", "caption": "Great-grandmother's wooden comb" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-migration-2/900/600", "caption": "Grandfather's railway lamp" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-migration-3/900/600", "caption": "Mother's first dictionary" }
+    ]
+  },
+  {
+    "id": "p10",
+    "studentNameZh": "吴一帆",
+    "studentNameEn": "Wu Yifan",
+    "grade": "Grade 1 · 一年级",
+    "year": "2024–2025",
+    "projectTitleZh": "影子游戏",
+    "projectTitleEn": "Shadow Games",
+    "color": "red",
+    "blocks": [
+      { "type": "text", "content": "I traced my shadow on the playground at the same hour every Friday for one school year." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-shadow-1/900/600", "caption": "September · long & thin" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-shadow-2/900/600", "caption": "December · short & fat" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-shadow-3/900/600", "caption": "June · the smallest one" }
+    ]
+  },
+  {
+    "id": "p11",
+    "studentNameZh": "高朗朗",
+    "studentNameEn": "Gao Langlang",
+    "grade": "Grade 10 · 十年级",
+    "year": "2024–2025",
+    "projectTitleZh": "一棵树的肖像",
+    "projectTitleEn": "Portrait of a Tree",
+    "color": "yellow",
+    "blocks": [
+      { "type": "text", "content": "Fifty-two ink paintings of the same camphor tree behind the dormitory — one each week." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-tree-1/900/600", "caption": "Week 7 · 雨后" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-tree-2/900/600", "caption": "Week 24 · 蝉" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-tree-3/900/600", "caption": "Week 41 · 风" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-tree-4/900/600", "caption": "Week 52 · 静" }
+    ]
+  },
+  {
+    "id": "p12",
+    "studentNameZh": "何乐知",
+    "studentNameEn": "He Lezhi",
+    "grade": "Grade 3 · 三年级",
+    "year": "2024–2025",
+    "projectTitleZh": "我发明的字",
+    "projectTitleEn": "Characters I Invented",
+    "color": "green",
+    "blocks": [
+      { "type": "text", "content": "Twenty new Chinese characters for things that didn't have one yet — like the smell after rain, or the feeling of being almost-late." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-char-1/900/600", "caption": "雨味 · the smell after rain" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-char-2/900/600", "caption": "差点 · almost-late-ness" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-char-3/900/600", "caption": "猫暖 · cat-warm" }
+    ]
+  },
+  {
+    "id": "p13",
+    "studentNameZh": "范知夏",
+    "studentNameEn": "Fan Zhixia",
+    "grade": "Grade 5 · 五年级",
+    "year": "2024–2025",
+    "projectTitleZh": "纸的实验",
+    "projectTitleEn": "Paper Experiments",
+    "color": "blue",
+    "blocks": [
+      { "type": "text", "content": "I made paper from twelve different plants gathered around the school and wrote one wish on each sheet." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-paper-1/900/600", "caption": "Banana leaf paper · 香蕉叶" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-paper-2/900/600", "caption": "Rice straw paper · 稻草" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-paper-3/900/600", "caption": "Mulberry bark paper · 桑皮" }
+    ]
+  },
+  {
+    "id": "p14",
+    "studentNameZh": "唐听月",
+    "studentNameEn": "Tang Tingyue",
+    "grade": "Grade 11 · 十一年级",
+    "year": "2024–2025",
+    "projectTitleZh": "夜里的城市",
+    "projectTitleEn": "The City at Night",
+    "color": "red",
+    "blocks": [
+      { "type": "text", "content": "A photo essay on the people who work while the city sleeps — bakers, sweepers, late-shift nurses." },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-night-1/900/600", "caption": "03:14 · the baker, Mr. Liang" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-night-2/900/600", "caption": "04:02 · the street, Auntie Mei" },
+      { "type": "image", "src": "https://picsum.photos/seed/xinxing-night-3/900/600", "caption": "05:30 · the bus driver, Brother Chen" }
+    ]
+  }
+]
