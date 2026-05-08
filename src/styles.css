@@ -170,13 +170,18 @@ body {
   font-family: 'Noto Serif SC', serif;
 }
 
-/* ---------- Leaves ---------- */
+/* ---------- Leaves ----------
+   Position lives on the parent <g> (via SVG transform attribute).
+   This .leaf class only animates rotation — it must NEVER set translate,
+   otherwise it would overwrite each leaf's positioning and clump them.   */
 .leaf {
   cursor: pointer;
   animation-name: sway;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
   transition: filter 220ms ease;
 }
 
@@ -189,19 +194,17 @@ body {
 .leaf:hover .leaf-label,
 .leaf:focus .leaf-label {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .leaf-label {
   opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 180ms ease, transform 180ms ease;
+  transition: opacity 180ms ease;
 }
 
 @keyframes sway {
-  0%   { transform: rotate(-1.2deg) translate(-1px, 0); }
-  50%  { transform: rotate( 0.6deg) translate( 1px, -1px); }
-  100% { transform: rotate( 1.6deg) translate( 2px,  1px); }
+  0%   { transform: rotate(-1.5deg); }
+  50%  { transform: rotate( 0.5deg); }
+  100% { transform: rotate( 1.8deg); }
 }
 
 /* On really small screens, calm the wind a bit so it doesn't jitter */
