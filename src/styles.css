@@ -293,7 +293,7 @@ body {
   animation-name: bird-fly-away !important;
   animation-iteration-count: 1 !important;
   animation-direction: normal !important;
-  animation-timing-function: cubic-bezier(.22,.6,.36,1) !important;
+  animation-timing-function: cubic-bezier(.4,.05,.5,.95) !important;
 }
 
 /* Wings beat hard during the escape */
@@ -301,16 +301,40 @@ body {
   animation-duration: 0.16s !important;
 }
 .bird-startled .bird-wing-tucked {
-  animation-duration: 0.22s !important;
+  animation-duration: 0.18s !important;
 }
 
-/* Bird rushes off, stays out of view for ~1.5s, then drifts back. */
+/* Bird flies out in a curved arc and returns along a different curve.
+   Stays fully visible throughout — no fading. The waypoints describe an
+   elliptical trajectory: rise + outward → peak → return below → settle. */
 @keyframes bird-fly-away {
-  0%   { transform: translate(0, 0) rotate(0deg); opacity: 1; }
-  35%  { transform: translate(var(--fly-away-x), var(--fly-away-y)) rotate(-8deg); opacity: 1; }
-  55%  { transform: translate(var(--fly-away-x), var(--fly-away-y)) rotate(-8deg); opacity: 0; }
-  75%  { transform: translate(var(--fly-away-x), var(--fly-away-y)) rotate(-8deg); opacity: 0; }
-  100% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  18%  {
+    transform:
+      translate(calc(var(--fly-away-x) * 0.35), calc(var(--fly-away-y) * 0.65))
+      rotate(-14deg);
+  }
+  42%  {
+    transform:
+      translate(calc(var(--fly-away-x) * 0.85), calc(var(--fly-away-y) * 1.0))
+      rotate(-8deg);
+  }
+  58%  {
+    transform:
+      translate(var(--fly-away-x), calc(var(--fly-away-y) * 0.85))
+      rotate(2deg);
+  }
+  78%  {
+    transform:
+      translate(calc(var(--fly-away-x) * 0.45), calc(var(--fly-away-y) * 0.4))
+      rotate(6deg);
+  }
+  92%  {
+    transform:
+      translate(calc(var(--fly-away-x) * 0.1), calc(var(--fly-away-y) * 0.1))
+      rotate(2deg);
+  }
+  100% { transform: translate(0, 0) rotate(0deg); }
 }
 
 /* On really small screens, calm the wind a bit so it doesn't jitter */
