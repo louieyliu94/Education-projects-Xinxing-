@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
-// Folk-art bird, royal-blue ink silhouette. Two variants:
-//   "perched"  — sits on a branch, gently bobs
-//   "flying"   — drifts across the canopy with a flapping M-curve wing
+// Royal blue — Xinxing's indigo from the school logo.
+const INK = '#1B2A6B'
+const INK_DEEP = '#0E1742'
+const BEAK = '#C8412B'
+
+// Sketched bird, drawn as a sequence of separate brush strokes the way a
+// Chinese watercolor bird would be: a body wash, a head wash, beak, tail
+// feathers, tucked wing, legs. Two variants: perched and flying.
 //
-// When `disturbCount` changes, the bird gets startled and flies off briefly
-// before settling back into its idle motion.
+// disturbCount: every change triggers a one-shot fly-away animation.
 export default function Bird({
   x = 0,
   y = 0,
@@ -22,7 +26,7 @@ export default function Bird({
   useEffect(() => {
     if (disturbCount === 0) return
     setStartled(true)
-    const t = setTimeout(() => setStartled(false), 2600)
+    const t = setTimeout(() => setStartled(false), 4200)
     return () => clearTimeout(t)
   }, [disturbCount])
 
@@ -34,73 +38,103 @@ export default function Bird({
 
   return (
     <svg
-      x={x - 24}
-      y={y - 18}
-      width="48"
-      height="36"
+      x={x - 28}
+      y={y - 22}
+      width="56"
+      height="44"
       overflow="visible"
       className={cls}
       style={{
         animationDelay: startled ? '0s' : `${delay}s`,
-        animationDuration: startled ? '2.6s' : `${duration}s`,
+        animationDuration: startled ? '4.2s' : `${duration}s`,
         '--fly-away-x': `${flyAwayX}px`,
         '--fly-away-y': `${flyAwayY}px`
       }}
       pointerEvents="none"
     >
-      <g transform={`translate(24 18) scale(${scale})`}>
-        {kind === 'flying' ? (
-          <>
-            {/* Iconic two-arc silhouette — M shape with a small body */}
-            <path
-              className="bird-wings"
-              d="M -14 1 Q -7 -10, 0 -2 Q 7 -10, 14 1"
-              stroke="#1B2A6B"
-              strokeWidth="1.8"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <ellipse cx="0" cy="-1.5" rx="2.2" ry="1" fill="#1B2A6B" />
-          </>
+      <g transform={`translate(28 22) scale(${scale})`}>
+        {kind === 'perched' ? (
+          <PerchedBird />
         ) : (
-          <>
-            {/* Perched silhouette — body, head, beak, tail, legs */}
-            <path
-              d="M -8 0
-                 C -9 -3, -7 -6, -3 -7
-                 C 1 -8, 5 -7, 7 -5
-                 L 9 -4 L 11 -4 L 9 -3
-                 C 5 -2, 0 -2, -3 -1
-                 L -8 0 Z"
-              fill="#1B2A6B"
-              filter="url(#watercolor)"
-            />
-            {/* Tail */}
-            <path
-              d="M -8 0 L -13 -1 L -13 2 Z"
-              fill="#1B2A6B"
-              filter="url(#watercolor)"
-            />
-            {/* Eye */}
-            <circle cx="6" cy="-5" r="0.8" fill="#FFFEF6" />
-            {/* Beak highlight */}
-            <path d="M 9 -4 L 11 -4 L 9 -3 Z" fill="#C8412B" />
-            {/* Wing — flaps */}
-            <path
-              className="bird-wing-tucked"
-              d="M -3 -3 C 1 -7, 5 -7, 5 -3 C 2 -2, -1 -2, -3 -3 Z"
-              fill="#0E1742"
-              filter="url(#watercolor)"
-            />
-            {/* Legs */}
-            <g stroke="#2a1810" strokeWidth="0.9" strokeLinecap="round" fill="none">
-              <path d="M -1 0 L -1 5" />
-              <path d="M 3 0 L 3 5" />
-            </g>
-          </>
+          <FlyingBird />
         )}
       </g>
     </svg>
+  )
+}
+
+function PerchedBird() {
+  return (
+    <g>
+      {/* Body — a soft watercolor wash, oval angled slightly up */}
+      <g transform="rotate(-8)">
+        <ellipse cx="0" cy="0" rx="9" ry="5.5" fill={INK} opacity="0.85" filter="url(#watercolor)" />
+        {/* Lighter belly highlight */}
+        <ellipse cx="-1" cy="2" rx="6" ry="2.5" fill="#3a4f8e" opacity="0.5" filter="url(#watercolor)" />
+      </g>
+
+      {/* Head — separate stroke, slightly above and forward */}
+      <circle cx="7" cy="-5" r="4" fill={INK} opacity="0.92" filter="url(#watercolor)" />
+
+      {/* Beak — small red triangle, school-logo accent */}
+      <path d="M 10 -4.5 L 14 -4 L 10 -3 Z" fill={BEAK} />
+
+      {/* Eye — single white dot */}
+      <circle cx="8" cy="-6" r="0.6" fill="#FFFEF6" />
+
+      {/* Tail feathers — 3 brush strokes radiating back */}
+      <g stroke={INK} strokeWidth="1.4" strokeLinecap="round" fill="none" opacity="0.85">
+        <path d="M -7 -1 L -14 -3" />
+        <path d="M -7  0 L -15 0" />
+        <path d="M -7  1 L -14 3" />
+      </g>
+
+      {/* Wing tucked along body — animates a tiny tuck/release */}
+      <path
+        className="bird-wing-tucked"
+        d="M -2 -3 C 3 -7, 8 -5, 6 -1 C 1 0, -2 -1, -2 -3 Z"
+        fill={INK_DEEP}
+        opacity="0.85"
+        filter="url(#watercolor)"
+      />
+
+      {/* Legs */}
+      <g stroke="#2a1810" strokeWidth="0.9" strokeLinecap="round" fill="none">
+        <path d="M -1 4 L -1 10" />
+        <path d="M  3 4 L  3 10" />
+        {/* Tiny feet */}
+        <path d="M -2 10 L -1 10 L 0 10" />
+        <path d="M  2 10 L  3 10 L 4 10" />
+      </g>
+    </g>
+  )
+}
+
+function FlyingBird() {
+  return (
+    <g>
+      {/* Wings — single graceful stroke covering both wings */}
+      <path
+        className="bird-wings"
+        d="M -16 1 Q -8 -10, 0 -3 Q 8 -10, 16 1"
+        stroke={INK}
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Body — small wash beneath the wings */}
+      <ellipse cx="0" cy="-1.5" rx="3" ry="1.3" fill={INK} opacity="0.85" filter="url(#watercolor)" />
+      {/* Head — small circle */}
+      <circle cx="3" cy="-2.5" r="1.3" fill={INK} />
+      {/* Beak */}
+      <path d="M 4 -2.5 L 6 -2 L 4 -1.5 Z" fill={BEAK} />
+      {/* Tail feathers */}
+      <g stroke={INK} strokeWidth="0.9" strokeLinecap="round" fill="none">
+        <path d="M -3 -1.5 L -6 -2.5" />
+        <path d="M -3 -1.5 L -6 -1.2" />
+        <path d="M -3 -1.5 L -6 0" />
+      </g>
+    </g>
   )
 }

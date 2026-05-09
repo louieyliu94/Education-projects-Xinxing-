@@ -121,15 +121,9 @@ export default function Leaf({
             strokeLinecap="round"
             fill="none"
           />
-          {/* Stem to the twig */}
-          <path
-            d="M -28 0 L -38 1"
-            stroke="#3a2418"
-            strokeOpacity="0.55"
-            strokeWidth="1.0"
-            strokeLinecap="round"
-            fill="none"
-          />
+          {/* No leaf-stem path: the twig drawn in Tree.jsx reaches the leaf
+              directly, so a separate stem here would point in a fixed local
+              direction (sideways) and look wrong against varied branches. */}
         </g>
 
         {/* Hover label */}
