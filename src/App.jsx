@@ -13,10 +13,6 @@ export default function App() {
 
       <main className="tree-stage">
         <Tree projects={projects} onLeafClick={setActiveProject} />
-        <p className="hint">
-          <span>Hover or click a leaf to read a student portfolio</span>
-          <span>悬停或点击叶子，走进一位学生的作品</span>
-        </p>
       </main>
 
       {activeProject && (

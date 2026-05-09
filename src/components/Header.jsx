@@ -1,15 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+// The school logo is a specific seal-style mark with concentric squares —
+// it should be used as-is, not redrawn or abstracted. Drop the real file at:
+//   public/logo.png   (or .svg / .jpg)
+//
+// If the file doesn't exist, we fall back to text-only branding rather than
+// showing a placeholder mark that misrepresents the school's identity.
 export default function Header() {
+  const [logoOk, setLogoOk] = useState(true)
   return (
     <header className="page-header">
       <a className="logo-mark" href="#" aria-label="Xinxing School home">
-        {/* Replace /logo-placeholder.svg with /logo.png when you have the real asset */}
-        <img src="./logo-placeholder.svg" alt="" />
-        <span className="logo-text">
-          <span className="zh">新星学校</span>
-          <span className="en">XINXING SCHOOL</span>
-        </span>
+        {logoOk && (
+          <img
+            src="./logo.png"
+            alt="Xinxing School logo"
+            onError={() => setLogoOk(false)}
+          />
+        )}
+        {!logoOk && (
+          <span className="logo-text">
+            <span className="zh">新星学校</span>
+            <span className="en">XINXING SCHOOL</span>
+          </span>
+        )}
       </a>
 
       <div className="page-title-block">
