@@ -228,11 +228,14 @@ body {
   100% { transform: translateX( 180px); opacity: 0.0; }
 }
 
-/* ---------- Birds ---------- */
+/* ---------- Birds ----------
+   Pointer events are enabled so hovering a bird triggers fly-away.
+   Inner <g pointer-events="visiblePainted"> restricts hits to the painted
+   shapes, so transparent space inside the bird's bounding box doesn't fire. */
 .bird {
-  pointer-events: none;
   transform-box: fill-box;
   transform-origin: center;
+  cursor: pointer;
 }
 
 .bird-perched {

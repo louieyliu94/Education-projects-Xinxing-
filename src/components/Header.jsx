@@ -13,7 +13,7 @@ export default function Header() {
       <a className="logo-mark" href="#" aria-label="Xinxing School home">
         {logoOk && (
           <img
-            src="./logo.png"
+            src="./logo.svg"
             alt="Xinxing School logo"
             onError={() => setLogoOk(false)}
           />

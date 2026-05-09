@@ -154,51 +154,92 @@ export default function Tree({ projects, onLeafClick }) {
 
       <ellipse cx={VIEW_W / 2} cy={VIEW_H - 30} rx="220" ry="18" fill="url(#groundShadow)" />
 
-      {/* TRUNK — even thickness, very gentle taper, no bottle.
-          Width ~120 at base, ~80 at top. */}
+      {/* TRUNK — slim. ~70px at base, ~30px at top, gentle taper, no bottle. */}
       <g filter="url(#watercolor)" className="trunk">
         <path
           d="
-            M 440 880
-            C 444 820, 448 760, 452 700
-            C 455 640, 458 580, 461 520
-            C 463 500, 466 488, 470 480
+            M 466 880
+            C 468 820, 471 760, 474 700
+            C 476 640, 478 580, 481 520
+            C 482 500, 484 488, 486 480
 
-            L 530 480
-            C 534 488, 537 500, 539 520
-            C 542 580, 545 640, 548 700
-            C 552 760, 556 820, 560 880
+            L 514 480
+            C 516 488, 518 500, 519 520
+            C 522 580, 524 640, 526 700
+            C 529 760, 532 820, 534 880
             Z
           "
           fill="url(#trunkGradient)"
         />
-        {/* Bark hairlines — vertical, slightly broken */}
-        <g stroke="#1a0e08" strokeOpacity="0.30" strokeLinecap="round" fill="none" filter="url(#rough)">
-          <path d="M 458 500 C 458 600, 457 700, 454 820" strokeWidth="0.9" />
-          <path d="M 480 488 C 480 600, 479 700, 477 820" strokeWidth="0.8" />
-          <path d="M 500 488 C 500 600, 500 700, 500 820" strokeWidth="0.8" />
-          <path d="M 520 488 C 520 600, 521 700, 523 820" strokeWidth="0.8" />
-          <path d="M 542 500 C 542 600, 543 700, 546 820" strokeWidth="0.9" />
+        {/* Bark hairlines */}
+        <g stroke="#1a0e08" strokeOpacity="0.32" strokeLinecap="round" fill="none" filter="url(#rough)">
+          <path d="M 480 500 C 480 620, 479 740, 477 820" strokeWidth="0.7" />
+          <path d="M 495 488 C 495 620, 495 740, 494 820" strokeWidth="0.6" />
+          <path d="M 505 488 C 505 620, 505 740, 506 820" strokeWidth="0.6" />
+          <path d="M 520 500 C 521 620, 521 740, 523 820" strokeWidth="0.7" />
         </g>
       </g>
 
-      {/* MAIN BRANCHES — emerge from the top of the trunk */}
+      {/* MAIN BRANCHES — multi-segment curves with bends and joints, like
+          real kapok boughs. Each path uses chained cubic curves so the
+          branch wobbles, doesn't read as a single ruled arc. */}
       <g filter="url(#rough)" fill="none" stroke="url(#branchGradient)" strokeLinecap="round" className="branches">
-        <path d={`M ${FORK_LEFT.x} ${FORK_LEFT.y} C 420 440, 350 400, 230 380`} strokeWidth="13" />
-        <path d={`M ${FORK_CENTER.x} ${FORK_CENTER.y} C 500 380, 502 270, 504 180`} strokeWidth="12" />
-        <path d={`M ${FORK_RIGHT.x} ${FORK_RIGHT.y} C 580 440, 660 400, 790 380`} strokeWidth="13" />
+        {/* Left main bough — bends down then up before reaching out */}
+        <path d="M 486 480
+                 C 460 470, 430 478, 410 460
+                 C 390 442, 360 432, 320 410
+                 C 280 392, 240 388, 210 376" strokeWidth="11" />
+        {/* Center main bough — slight S-curve upward */}
+        <path d="M 500 480
+                 C 498 440, 504 400, 500 360
+                 C 496 320, 502 270, 504 220
+                 C 504 200, 504 190, 504 170" strokeWidth="10" />
+        {/* Right main bough */}
+        <path d="M 514 480
+                 C 540 470, 568 478, 590 460
+                 C 612 442, 642 432, 680 412
+                 C 720 392, 760 386, 790 376" strokeWidth="11" />
 
-        <path d="M 340 400 C 270 370, 180 340, 110 320" strokeWidth="6" />
-        <path d="M 320 405 C 250 360, 190 310, 160 240" strokeWidth="5.5" />
-        <path d="M 400 385 C 360 340, 320 280, 305 220" strokeWidth="5" />
+        {/* Secondary boughs — left side, with bends */}
+        <path d="M 380 432
+                 C 350 410, 290 380, 230 360
+                 C 180 348, 140 332, 110 320" strokeWidth="5.5" />
+        <path d="M 360 425
+                 C 320 388, 260 352, 220 312
+                 C 200 290, 180 264, 160 240" strokeWidth="5" />
+        <path d="M 420 420
+                 C 400 380, 380 340, 360 300
+                 C 340 260, 320 230, 305 220" strokeWidth="4.5" />
 
-        <path d="M 498 350 C 470 290, 440 220, 420 130" strokeWidth="5.5" />
-        <path d="M 502 350 C 530 290, 560 220, 580 130" strokeWidth="5.5" />
-        <path d="M 504 220 C 500 170, 500 120, 503 80" strokeWidth="5" />
+        {/* Secondary boughs — center */}
+        <path d="M 500 360
+                 C 480 320, 460 280, 440 230
+                 C 430 200, 420 160, 420 130" strokeWidth="5" />
+        <path d="M 504 360
+                 C 522 320, 542 280, 562 230
+                 C 572 200, 580 160, 580 130" strokeWidth="5" />
+        <path d="M 504 220
+                 C 502 188, 502 150, 503 110
+                 L 503 80" strokeWidth="4.5" />
 
-        <path d="M 660 400 C 730 370, 810 340, 890 320" strokeWidth="6" />
-        <path d="M 690 405 C 740 360, 800 310, 830 240" strokeWidth="5.5" />
-        <path d="M 610 385 C 650 340, 680 280, 695 220" strokeWidth="5" />
+        {/* Secondary boughs — right side */}
+        <path d="M 620 420
+                 C 660 388, 720 358, 770 340
+                 C 820 326, 860 320, 890 320" strokeWidth="5.5" />
+        <path d="M 640 415
+                 C 680 380, 730 348, 770 308
+                 C 800 280, 820 258, 830 240" strokeWidth="5" />
+        <path d="M 580 410
+                 C 600 372, 622 332, 650 290
+                 C 670 258, 685 232, 695 220" strokeWidth="4.5" />
+
+        {/* Tertiary twigs — short little forks */}
+        <path d="M 280 386 C 260 370, 240 360, 220 358" strokeWidth="2.5" />
+        <path d="M 360 410 C 340 396, 320 388, 305 386" strokeWidth="2.5" />
+        <path d="M 720 388 C 740 372, 760 364, 780 360" strokeWidth="2.5" />
+        <path d="M 640 408 C 660 392, 680 384, 695 382" strokeWidth="2.5" />
+        <path d="M 480 320 C 470 300, 460 286, 455 280" strokeWidth="2.2" />
+        <path d="M 524 320 C 534 300, 544 286, 549 280" strokeWidth="2.2" />
       </g>
 
       {/* Twigs to each leaf */}
