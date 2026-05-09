@@ -57,10 +57,22 @@ export default function Bird({
         '--fly-away-x': `${flyAwayX}px`,
         '--fly-away-y': `${flyAwayY}px`
       }}
-      onMouseEnter={triggerStartle}
     >
-      <g transform={`translate(28 22) scale(${scale})`} pointerEvents="visiblePainted">
+      <g transform={`translate(28 22) scale(${scale})`}>
         {kind === 'perched' ? <PerchedBird /> : <FlyingBird />}
+        {/* Invisible hit target — explicitly captures hover so the SVG's
+            ambiguous pointer-events behavior can't break the fly-away. */}
+        <rect
+          x="-22"
+          y="-18"
+          width="44"
+          height="36"
+          fill="transparent"
+          pointerEvents="all"
+          style={{ cursor: 'pointer' }}
+          onMouseEnter={triggerStartle}
+          onClick={triggerStartle}
+        />
       </g>
     </svg>
   )

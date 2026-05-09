@@ -1,65 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
   <!--
-    Recreation of the Xinxing School seal mark (red starfish with concentric
-    square stamps inside each limb). For the highest-fidelity version, replace
-    this file with the school's official logo asset.
+    Approximation of the Xinxing School seal mark:
+    a 5-pointed starfish-style figure (head + two arms + two legs),
+    each limb a curved tapered outline, each ending in concentric
+    rounded-square stamps, with a vertical concentric stamp column
+    forming the central body. All red ink stroke.
+    For pixel-perfect fidelity, drop the school's official PNG/SVG at
+    /public/logo.png and update Header.jsx to load it.
   -->
-  <g stroke="#C8412B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- HEAD (top) -->
-    <g transform="translate(100, 30)">
-      <path d="M 0 -16 L 7 -4 L 0 6 L -7 -4 Z" />
-      <rect x="-5" y="-6" width="10" height="10" rx="2" />
-      <rect x="-2.5" y="-3.5" width="5" height="5" rx="1" />
-    </g>
+  <g stroke="#C8412B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
 
-    <!-- LEFT ARM -->
-    <g transform="translate(40, 70)">
-      <path d="M 20 -2 C 15 -8, 6 -10, 0 -4" />
-      <path d="M 20 6 C 15 12, 6 14, 0 8" />
-      <rect x="-18" y="-12" width="22" height="24" rx="4" />
-      <rect x="-14" y="-8" width="14" height="16" rx="3" />
-      <rect x="-10" y="-4" width="6" height="8" rx="1.5" />
-    </g>
+    <!-- HEAD — vertical pointed flame, with an inner stamp -->
+    <path d="M 120 16
+             C 116 32, 113 50, 112 66
+             C 116 70, 124 70, 128 66
+             C 127 50, 124 32, 120 16 Z" />
+    <rect x="115" y="46" width="10" height="14" rx="2.5" />
+    <rect x="118" y="50" width="4" height="6" rx="1" />
+
+    <!-- LEFT ARM — curved tapered limb sweeping outward and slightly down -->
+    <path d="M 104 78
+             C 86 76, 60 82, 38 92
+             C 36 94, 36 98, 38 100
+             C 60 96, 86 90, 106 88 Z" />
+    <!-- Stamp at the tip -->
+    <rect x="22" y="84" width="22" height="20" rx="4.5" />
+    <rect x="27" y="88" width="12" height="12" rx="3" />
+    <rect x="30" y="91" width="6" height="6" rx="1.5" />
 
     <!-- RIGHT ARM (mirror) -->
-    <g transform="translate(160, 70)">
-      <path d="M -20 -2 C -15 -8, -6 -10, 0 -4" />
-      <path d="M -20 6 C -15 12, -6 14, 0 8" />
-      <rect x="-4" y="-12" width="22" height="24" rx="4" />
-      <rect x="0" y="-8" width="14" height="16" rx="3" />
-      <rect x="4" y="-4" width="6" height="8" rx="1.5" />
-    </g>
+    <path d="M 136 78
+             C 154 76, 180 82, 202 92
+             C 204 94, 204 98, 202 100
+             C 180 96, 154 90, 134 88 Z" />
+    <rect x="196" y="84" width="22" height="20" rx="4.5" />
+    <rect x="201" y="88" width="12" height="12" rx="3" />
+    <rect x="204" y="91" width="6" height="6" rx="1.5" />
 
-    <!-- LEFT LEG -->
-    <g transform="translate(48, 158)">
-      <path d="M 16 -22 C 8 -16, 4 -8, 0 0" />
-      <path d="M 22 -18 C 14 -10, 8 -4, 4 4" />
-      <rect x="-14" y="-8" width="22" height="22" rx="4" />
-      <rect x="-10" y="-4" width="14" height="14" rx="3" />
-      <rect x="-6" y="0" width="6" height="6" rx="1.5" />
-    </g>
+    <!-- LEFT LEG — sweeps down-left -->
+    <path d="M 108 152
+             C 92 158, 70 174, 50 198
+             C 48 200, 50 204, 54 204
+             C 76 184, 96 168, 114 158 Z" />
+    <rect x="22" y="198" width="26" height="22" rx="5" />
+    <rect x="28" y="202" width="14" height="14" rx="3.5" />
+    <rect x="32" y="206" width="6" height="6" rx="1.5" />
 
     <!-- RIGHT LEG (mirror) -->
-    <g transform="translate(152, 158)">
-      <path d="M -16 -22 C -8 -16, -4 -8, 0 0" />
-      <path d="M -22 -18 C -14 -10, -8 -4, -4 4" />
-      <rect x="-8" y="-8" width="22" height="22" rx="4" />
-      <rect x="-4" y="-4" width="14" height="14" rx="3" />
-      <rect x="0" y="0" width="6" height="6" rx="1.5" />
-    </g>
+    <path d="M 132 152
+             C 148 158, 170 174, 190 198
+             C 192 200, 190 204, 186 204
+             C 164 184, 144 168, 126 158 Z" />
+    <rect x="192" y="198" width="26" height="22" rx="5" />
+    <rect x="198" y="202" width="14" height="14" rx="3.5" />
+    <rect x="202" y="206" width="6" height="6" rx="1.5" />
 
-    <!-- CENTRAL BODY — vertical concentric stamps -->
-    <g transform="translate(100, 105)">
-      <rect x="-10" y="-26" width="20" height="52" rx="4" />
-      <rect x="-6" y="-22" width="12" height="44" rx="3" />
-      <rect x="-3" y="-18" width="6" height="36" rx="1.5" />
-    </g>
-
-    <!-- Connecting limb lines into central body -->
-    <path d="M 22 70 L 90 95" />
-    <path d="M 178 70 L 110 95" />
-    <path d="M 100 50 L 100 79" />
-    <path d="M 50 158 L 92 130" />
-    <path d="M 150 158 L 108 130" />
+    <!-- CENTRAL BODY — three concentric vertical rounded rectangles -->
+    <rect x="106" y="74" width="28" height="84" rx="8" />
+    <rect x="112" y="82" width="16" height="68" rx="5" />
+    <rect x="117" y="92" width="6" height="48" rx="2" />
   </g>
 </svg>
