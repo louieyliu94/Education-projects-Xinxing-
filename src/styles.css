@@ -149,27 +149,6 @@ body {
   /* Tree resizes fluidly with the viewport thanks to viewBox + 100% width */
 }
 
-.hint {
-  position: absolute;
-  bottom: clamp(0.5rem, 1.5vw, 1.2rem);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  margin: 0;
-  font-size: 0.75rem;
-  color: var(--trunk);
-  opacity: 0.65;
-  text-align: center;
-  pointer-events: none;
-}
-
-.hint .zh {
-  font-family: 'Noto Serif SC', serif;
-}
-
 /* ---------- Leaves ----------
    Each leaf is a nested <svg x=... y=...>. CSS animations on descendants
    cannot move the leaf because x/y are layout attributes, not transforms. */
@@ -186,6 +165,13 @@ body {
   transform-box: fill-box;
   transform-origin: 0% 50%;
   transition: filter 220ms ease;
+}
+
+/* Periodic gust — when the SVG flips data-gust, leaves get a stronger pulse.
+   Combined with the per-leaf sway delays, this gives the canopy gust-and-lull
+   rhythm rather than a uniform metronome. */
+.tree-svg[data-gust="1"] .leaf {
+  animation-name: sway-gust;
 }
 
 .leaf:hover,
@@ -205,50 +191,117 @@ body {
 }
 
 @keyframes sway {
-  0%   { transform: rotate(-1.6deg); }
-  50%  { transform: rotate( 0.4deg); }
-  100% { transform: rotate( 1.8deg); }
+  0%   { transform: rotate(-2deg)   translateY(0); }
+  35%  { transform: rotate( 1deg)   translateY(-1px); }
+  70%  { transform: rotate( 2.4deg) translateY( 1px); }
+  100% { transform: rotate(-1.2deg) translateY(0); }
+}
+
+@keyframes sway-gust {
+  0%   { transform: rotate(-3deg)  translateY(0); }
+  40%  { transform: rotate( 2.5deg) translateY(-2px); }
+  70%  { transform: rotate( 4.5deg) translateY( 2px); }
+  100% { transform: rotate(-1deg)   translateY(0); }
+}
+
+/* ---------- Branches subtly drift with the gust too ---------- */
+.branches {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: branch-drift 9s ease-in-out infinite alternate;
+}
+
+@keyframes branch-drift {
+  0%   { transform: rotate(-0.25deg); }
+  100% { transform: rotate( 0.25deg); }
+}
+
+/* ---------- Mist drifts slowly across the canvas ---------- */
+.mist-drift {
+  animation: mist-pass 38s linear infinite;
+}
+
+@keyframes mist-pass {
+  0%   { transform: translateX(-180px); opacity: 0.0; }
+  20%  { opacity: 0.55; }
+  80%  { opacity: 0.45; }
+  100% { transform: translateX( 180px); opacity: 0.0; }
 }
 
 /* ---------- Birds ---------- */
 .bird {
   pointer-events: none;
-}
-
-.bird-perched {
-  animation: bird-bob ease-in-out infinite alternate;
-  transform-box: fill-box;
-  transform-origin: center bottom;
-}
-
-.bird-flying {
-  animation: bird-drift ease-in-out infinite;
   transform-box: fill-box;
   transform-origin: center;
 }
 
-.bird-wing {
-  animation: bird-flap 0.45s ease-in-out infinite alternate;
+.bird-perched {
+  animation-name: bird-bob;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+.bird-flying {
+  animation-name: bird-drift;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Wing flap — applies to whichever shape the bird uses */
+.bird-flying .bird-wings {
+  animation: wing-arc 0.8s ease-in-out infinite alternate;
   transform-box: fill-box;
   transform-origin: 50% 100%;
 }
 
+.bird-perched .bird-wing-tucked {
+  animation: wing-tuck 1.4s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+}
+
 @keyframes bird-bob {
   0%   { transform: translateY(0)    rotate(-1deg); }
-  100% { transform: translateY(-2px) rotate( 1deg); }
+  100% { transform: translateY(-2px) rotate( 1.5deg); }
 }
 
 @keyframes bird-drift {
-  0%   { transform: translate(  0px, 0px) rotate(-2deg); }
-  25%  { transform: translate( 60px, -8px) rotate( 1deg); }
-  50%  { transform: translate(120px, 6px) rotate( 3deg); }
-  75%  { transform: translate( 60px, -4px) rotate( 0deg); }
-  100% { transform: translate(  0px, 0px) rotate(-2deg); }
+  0%   { transform: translate(  0px, 0px) rotate(-3deg); }
+  25%  { transform: translate( 80px,-12px) rotate( 1deg); }
+  50%  { transform: translate(160px,  6px) rotate( 4deg); }
+  75%  { transform: translate( 80px, -6px) rotate( 0deg); }
+  100% { transform: translate(  0px, 0px) rotate(-3deg); }
 }
 
-@keyframes bird-flap {
-  0%   { transform: rotate(-12deg) scaleY(1); }
-  100% { transform: rotate( 12deg) scaleY(0.7); }
+@keyframes wing-arc {
+  0%   { d: path('M -14 1 Q -7 -10, 0 -2 Q 7 -10, 14 1'); }
+  100% { d: path('M -14 1 Q -7  4, 0 -2 Q 7  4, 14 1'); }
+}
+
+@keyframes wing-tuck {
+  0%   { transform: scaleY(1); }
+  100% { transform: scaleY(0.65) translateY(-1px); }
+}
+
+/* Startled — fires when any leaf is hovered/clicked. Bird flies sharply away
+   along the per-bird --fly-away-x/y direction, then drifts back. */
+.bird-startled {
+  animation-name: bird-fly-away !important;
+  animation-iteration-count: 1 !important;
+  animation-direction: normal !important;
+  animation-timing-function: cubic-bezier(.22,.6,.36,1) !important;
+}
+
+.bird-startled .bird-wings {
+  animation-duration: 0.18s !important;
+}
+
+@keyframes bird-fly-away {
+  0%   { transform: translate(0, 0) rotate(0); }
+  35%  { transform: translate(calc(var(--fly-away-x) * 0.55), calc(var(--fly-away-y) * 0.55)) rotate(-6deg); }
+  70%  { transform: translate(var(--fly-away-x), var(--fly-away-y)) rotate(2deg); }
+  100% { transform: translate(0, 0) rotate(0); }
 }
 
 /* On really small screens, calm the wind a bit so it doesn't jitter */
@@ -461,10 +514,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .hint {
-    font-size: 0.7rem;
-  }
-
   .modal {
     border-radius: 8px;
     padding: 1rem;
